@@ -6,7 +6,7 @@ To do this task, we need to design a computer vision method using deep learning 
 
 I am thinking about two solutions for doing this task. The first solution is using deep CNN networks for feature extraction and MLP networks for classification. In addition, we need to define a class for each expression in the dataset plus a not detected class for expressions with low similarities to the goal classes. We need to tune the system's hyperparameters (like the number of layers, the number of nodes in each layer, batch size, activation function, and even the optimizer) for the best performance. The second solution is to use an encoder-decoder algorithm using transformers. This architecture uses a latent space for each class of facial expressions. Each point in the latent space corresponds to a class. This is a proposal for the solution method and requires a deeper understanding of the methods and implementation. 
 
-I found a dataset with 8 different classes for facial expressions. The dataset contains Angry, Contempt, Disgust, Fear, Happy, Neutral, Sadness, and Surprise. There are multiple pictures from video frames of faces from different people with different facial expressions. We need to divide the dataset by people, not pictures into training (70%), validation (15%), and test sets (15%). This is because using the same person in training, validation, and testing, will result in overfitting without knowing. That being said, I believe we can find other datasets with more classes and more pictures by spending more time. On the other hand, we can use video frames as input for RNN networks after feature extraction using CNN. This will help the classification problem by using data series with RNN networks. In addition, I plan to use data augmentation. This increases data in the dataset, which will improve the performance of the system by allowing us to use deeper networks without overfitting.
+I found a dataset with 8 different classes for facial expressions. The dataset contains Angry, Contempt, Disgust, Fear, Happy, Neutral, Sadness, and Surprise. There are multiple pictures from video frames of faces from different people with different facial expressions. We need to divide the dataset by people, not pictures into training (70%), validation (20%), and test sets (10%). This is because using the same person in training, validation, and testing, will result in overfitting without knowing. That being said, I believe we can find other datasets with more classes and more pictures by spending more time. On the other hand, we can use video frames as input for RNN networks after feature extraction using CNN. This will help the classification problem by using data series with RNN networks. In addition, I plan to use data augmentation. This increases data in the dataset, which will improve the performance of the system by allowing us to use deeper networks without overfitting.
 
 For this problem, we need to use cross-entropy loss. In addition, we need to use accuracy and loss as a metric for the performance evaluation. We can use the confusion matrix as a good metric too. We can try different activation functions for network layers. However, I think ReLU or Leaky ReLU would work fine for all layers except the last layer which we need to use the sigmoid function. In addition, ADAM optimizer may work best for this task. 
 
@@ -16,5 +16,17 @@ My plan is to use my laptop for training. My laptop has a 6 GB Nvidia RTX 3060 G
 ## Part 2: Data acquisition and preparation
 There are a number of datasets available on the internet. However, the public datasets are limited. After lots of research, I want to use the following dataset for this project:
 https://www.kaggle.com/datasets/jonathanoheix/face-expression-recognition-dataset/data
+
+This dataset contains 7 classes. Although the dataset contains one class less than the CK+ dataset (which I mentioned in the previous part), the number of images for each class is much higher. The classes are included as Angry, Disgust, Fear, Happy, Neutral, Sad, and Surprise. 
+The dataset consists of 28821 images for training and 7066 images for validation. I decided to divide the training part into two subsets for training and testing. First, I shuffled the training data, and used 3590 images for the test, and 25231 images for training. Therefore, I have a total of 35887 images which I divide into 70% for training, 20% for validation, and 10% for the test. You can see the class details of the dataset in the following table.  
+
+| Class/Data | Total | Angry | Disgust | Fear | Happy | Neutral |  Sad  | Surprise |
+|------------|-------|-------|---------|------|-------|---------|-------|----------|
+|  Training  | 25231 | 3498  |   381   | 3591 | 6264  |  4362   | 4330  |  2805    |
+| Validation | 7066  | 960   |   111   | 1018 | 1825  |  4982   | 1139  |  797     |
+|    Test    | 3590  | 495   |   55    | 512  | 900   |  620    | 608   |  400     |
+|   Total    | 35887 | 4953  |   547   | 5121 | 8989  |  6198   | 6077  |  4002    |
+
+
 
 
