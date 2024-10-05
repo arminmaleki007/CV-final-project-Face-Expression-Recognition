@@ -23,10 +23,10 @@ The dataset consists of 28821 images for training and 7066 images for validation
 
 | Class/Data | Total | Angry | Disgust | Fear | Happy | Neutral |  Sad  | Surprise |
 |------------|-------|-------|---------|------|-------|---------|-------|----------|
-|  Training  | 25231 | 3498  |   381   | 3591 | 6264  |  4362   | 4330  |  2805    |
-| Validation | 7066  | 960   |   111   | 1018 | 1825  |  4982   | 1139  |  797     |
-|    Test    | 3590  | 495   |   55    | 512  | 900   |  620    | 608   |  400     |
-|   Total    | 35887 | 4953  |   547   | 5121 | 8989  |  6198   | 6077  |  4002    |
+|  Training  | 25231 | 3498  |   381   | 3591 | 6264  |  4362   | 4330  |   2805   |
+| Validation | 7066  | 960   |   111   | 1018 | 1825  |  4982   | 1139  |   797    |
+|    Test    | 3590  | 495   |   55    | 512  | 900   |  620    | 608   |   400    |
+|   Total    | 35887 | 4953  |   547   | 5121 | 8989  |  6198   | 6077  |   4002   |
 
 Each image in the dataset is a 28*28 pixels grayscale image of a person's face. Images are collected from the internet and have been classified for the dataset by hand. In addition to the dataset, I will use data augmentation like flip and rotation to increase the number of data samples for a better solution. 
 
