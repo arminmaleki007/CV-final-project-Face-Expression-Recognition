@@ -11,3 +11,10 @@ I found a dataset with 8 different classes for facial expressions. The dataset c
 For this problem, we need to use cross-entropy loss. In addition, we need to use accuracy and loss as a metric for the performance evaluation. We can use the confusion matrix as a good metric too. We can try different activation functions for network layers. However, I think ReLU or Leaky ReLU would work fine for all layers except the last layer which we need to use the sigmoid function. In addition, ADAM optimizer may work best for this task. 
 
 My plan is to use my laptop for training. My laptop has a 6 GB Nvidia RTX 3060 GPU which I think is enough for training for this task. The alternative environment is CRC. In addition, I think Google Colab may work too. However, it will be slower than other environments.
+
+
+## Part 2: Data acquisition and preparation
+There are a number of datasets available on the internet. However, the public datasets are limited. After lots of research, I want to use the following dataset for this project:
+https://www.kaggle.com/datasets/jonathanoheix/face-expression-recognition-dataset/data
+
+
