@@ -32,5 +32,7 @@ Each image in the dataset is a 112*112 pixels grayscale image of a person's face
 
 For the training, I am using a CNN-based transformer architecture. Since the success of attention mechanisms in large language models, this mechanism has gotten lots of attention in other fields. Researchers have explored the integration of attention mechanisms into deep Convolutional Neural Networks (CNNs) to extract more informative features from images. Transformers have recently emerged as a dominant framework across various tasks, outperforming traditional models like Recurrent Neural Networks (RNNs) and Convolutional Neural Networks (CNNs). Leveraging multi-head attention mechanisms, Transformers have demonstrated exceptional performance across multiple domains. 
 
-I am following the work of https://github.com/SainingZhang/DDAMFN/tree/main. ![image](https://github.com/user-attachments/assets/0d1ea4c4-3ab2-4a74-87c1-ee4c66ac581b)
+I am following the work of https://github.com/SainingZhang/DDAMFN/tree/main. The architectural overview of the DDAMFN, illustrated in the next figure, consists of two primary components: the MFN and the DDAN. First, facial images are processed by the MFN, which generates initial feature maps. These feature maps are then refined through the DDAN, which creates attention maps in both vertical and horizontal directions. Finally, the attention maps are reshaped to the required dimensions, and a fully connected layer predicts the expression category of the images.
+
+![image](https://github.com/user-attachments/assets/0d1ea4c4-3ab2-4a74-87c1-ee4c66ac581b)
 
