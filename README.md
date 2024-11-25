@@ -16,7 +16,7 @@ My plan is to use my laptop for training. My laptop has a 6 GB Nvidia RTX 3060 G
 ## Part 2: Data acquisition and preparation
 There are a number of datasets available on the internet. However, the public datasets are limited. After lots of research, I want to use the following dataset for this project:
 https://www.kaggle.com/datasets/subhaditya/fer2013plus
-This dataset contains 8 classes. The number of images for each class is much higher tha CK+. The classes are included as Angry, Contempt, Disgust, Fear, Happy, Neutral, Sad, and Surprise. 
+This dataset contains 8 classes. The number of images for each class is much higher than CK+. The classes are included as Angry, Contempt, Disgust, Fear, Happy, Neutral, Sad, and Surprise. 
 
 The dataset consists of 66387 images for training, 8341 images for validation, and 3586 images for testing. Therefore, there are a total of 78314 images which is divided into 84% for training, 11% for validation, and 5% for the test. You can see the class details of the dataset in the following table.  
 
@@ -30,4 +30,6 @@ The dataset consists of 66387 images for training, 8341 images for validation, a
 Each image in the dataset is a 112*112 pixels grayscale image of a person's face. Images are collected from the internet and have been classified for the dataset by hand. In addition to the dataset, I will use data augmentation like flip and rotation to increase the number of data samples for a better solution. 
 ## Part 3: First update
 
+For the training, I am using a CNN-based transformer architecture. Since the success of attention mechanisms in large language models, this mechanism has gotten lots of attention in other fields. Researchers have explored the integration of attention mechanisms into deep Convolutional Neural Networks (CNNs) to extract more informative features from images. Transformers have recently emerged as a dominant framework across various tasks, outperforming traditional models like Recurrent Neural Networks (RNNs) and Convolutional Neural Networks (CNNs). Leveraging multi-head attention mechanisms, Transformers have demonstrated exceptional performance across multiple domains. 
 
+I am following the work of 
