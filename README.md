@@ -50,7 +50,7 @@ Each DDA head produces two attention maps, which are combined into a final atten
 ### Loss: 
 Attention loss: The Mean Squared Error (MSE) loss is calculated between each pair of attention maps generated from different dual-direction heads. The attention loss is then defined as the reciprocal of the sum of these MSE losses, which can be mathematically expressed as follows:
 
-$L_{att} = \frac{1}{\sum_{i=0}^n \sum_{k=0, i \neq k}^n \text{MSE}(a_i, a_k)}$
+$L_{att} = \frac{1}{\sum_{i=0}^n \sum_{k=0, i \neq k}^n \text{MSE}(a_i, a_k)} (i \neq j)$
 
 where 𝑛 is the number of attention heads. $a_i$ and $a_k$ are attentions maps yielded from two different heads.
 
