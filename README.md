@@ -15,19 +15,19 @@ My plan is to use my laptop for training. My laptop has a 6 GB Nvidia RTX 3060 G
 
 ## Part 2: Data acquisition and preparation
 There are a number of datasets available on the internet. However, the public datasets are limited. After lots of research, I want to use the following dataset for this project:
-https://www.kaggle.com/datasets/jonathanoheix/face-expression-recognition-dataset/data
+https://www.kaggle.com/datasets/subhaditya/fer2013plus
+This dataset contains 8 classes. The number of images for each class is much higher tha CK+. The classes are included as Angry, Contempt, Disgust, Fear, Happy, Neutral, Sad, and Surprise. 
 
-This dataset contains 7 classes. Although the dataset contains one class less than the CK+ dataset (which I mentioned in the previous part), the number of images for each class is much higher. The classes are included as Angry, Disgust, Fear, Happy, Neutral, Sad, and Surprise. 
+The dataset consists of 66387 images for training, 8341 images for validation, and 3586 images for testing. Therefore, there are a total of 78314 images which is divided into 84% for training, 11% for validation, and 5% for the test. You can see the class details of the dataset in the following table.  
 
-The dataset consists of 28821 images for training and 7066 images for validation. I decided to divide the training part into two subsets for training and testing. First, I shuffled the training data, and used 3590 images for the test, and 25231 images for training. Therefore, I have a total of 35887 images which I divide into 70% for training, 20% for validation, and 10% for the test. You can see the class details of the dataset in the following table.  
+| Class/Data | Total | Angry |contempt| Disgust | Fear | Happy | Neutral |  Sad  | Surprise |
+|------------|-------|-------|--------|---------|------|-------|---------|-------|----------|
+|  Training  | 66387 | 8000  |  8000  |  8000   | 8000 |  8000 |  10379  | 8000  |   8000   |
+| Validation | 8341  | 1000  |  1000  |  1000   | 1000 |  1000 |  1341   | 1000  |   1000   |
+|    Test    | 3586  |  332  |   30   |   21    |  98  |  929  |  1274   |  449  |    550   |
+|   Total    | 78314 | 9332  |  9032  |   9021  | 9098 |  9929 |  12994  | 9449  |   9550   |
 
-| Class/Data | Total | Angry | Disgust | Fear | Happy | Neutral |  Sad  | Surprise |
-|------------|-------|-------|---------|------|-------|---------|-------|----------|
-|  Training  | 25231 | 3498  |   381   | 3591 | 6264  |  4362   | 4330  |   2805   |
-| Validation | 7066  | 960   |   111   | 1018 | 1825  |  4982   | 1139  |   797    |
-|    Test    | 3590  | 495   |   55    | 512  | 900   |  620    | 608   |   400    |
-|   Total    | 35887 | 4953  |   547   | 5121 | 8989  |  6198   | 6077  |   4002   |
-
-Each image in the dataset is a 28*28 pixels grayscale image of a person's face. Images are collected from the internet and have been classified for the dataset by hand. In addition to the dataset, I will use data augmentation like flip and rotation to increase the number of data samples for a better solution. 
+Each image in the dataset is a 112*112 pixels grayscale image of a person's face. Images are collected from the internet and have been classified for the dataset by hand. In addition to the dataset, I will use data augmentation like flip and rotation to increase the number of data samples for a better solution. 
+## Part 3: First update
 
 
