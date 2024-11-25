@@ -37,7 +37,26 @@ I am following the work of https://github.com/SainingZhang/DDAMFN/tree/main. The
 ![image](https://github.com/user-attachments/assets/0d1ea4c4-3ab2-4a74-87c1-ee4c66ac581b)
 ### MFN: 
 Considering the potential overfitting issues associated with the use of heavy network architectures on small FER datasets, a lightweight network, MobileFaceNet, was adopted as the foundation. As illustrated in the next Figure a combination of two primary building blocks, a residual bottleneck and a non-residual block, was employed.
+
 ![image](https://github.com/user-attachments/assets/e9c7bee1-e104-4175-8596-43c98aecc226)
 
 The MFN architecture incorporates both residual and non-residual bottleneck blocks to balance feature extraction and information flow, enhancing its effectiveness for facial expression recognition (FER). Residual blocks mitigate degradation and improve gradient flow, while non-residual blocks enhance representational capacity to capture diverse facial features. The MixConv operation, with multiple kernel sizes illustrated in the next Figure, is integrated into the bottleneck, enabling the MFN to extract diverse and detailed features, surpassing MobileFaceNet. PreLU activation further improves facial feature extraction. Additionally, the network depth is optimized, and a coordinate attention mechanism is introduced to model long-range dependencies and provide accurate positional information, outperforming CBAM in FER tasks.
+
 ![image](https://github.com/user-attachments/assets/dc692715-3711-4f0a-9b62-34bf1557a054)
+### DDAN:
+The DDAN comprises multiple independent dual-direction attention (DDA) heads, each designed to capture long-range dependencies within the network. Based on the coordinate attention mechanism, DDA heads generate direction-aware feature maps from both horizontal and vertical directions. Instead of average pooling, linear GDConv is used to assign varying importance to different spatial positions, emphasizing key facial areas and enhancing the attention mechanism's discriminative power.
+
+Each DDA head produces two attention maps, which are combined into a final attention map matching the input feature map's size. The most salient attention map is selected, and the final output is obtained through element-wise multiplication of the input feature map with the selected attention map. To ensure each DDA head focuses on distinct facial regions, a novel attention loss function is introduced, further optimizing the attention mechanism for improved feature extraction.
+### Loss: 
+Attention loss: The Mean Squared Error (MSE) loss is calculated between each pair of attention maps generated from different dual-direction heads. The attention loss is then defined as the reciprocal of the sum of these MSE losses, which can be mathematically expressed as follows:
+
+$L_{att} = \frac{1}{\sum_{i=0}^n \sum_{k=0, i \neq k}^n \text{MSE}(a_i, a_k)}$
+
+where 𝑛 is the number of attention heads. $a_i$ and $a_k$ are attentions maps yielded from two different heads.
+
+The feature map of size 7 × 7 × 512, obtained from the DDAN, undergoes a linear GDConv layer and a linear layer. This transformed feature map is then reshaped to a 512 d vector. The class confidence is obtained via a fully connected layer. Regarding the loss function, the standard cross-entropy loss is employed in the training process. This loss function effectively measures the discrepancy between predicted class probabilities and the ground truth labels, facilitating the optimization of the model’s parameters. The overall loss function can be expressed as follows:
+
+$L = L_{cls} + \lambda_a L_{att}$
+
+where $L_{cls}$ stands for standard cross entropy loss and $L_{att}$ is attention loss. $\lambda_a$ is a hyperparameter. The default of $\lambda_a$ is 0.1.
+### Training
