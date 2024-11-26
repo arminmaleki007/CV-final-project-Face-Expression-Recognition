@@ -81,7 +81,8 @@ I used data augmentation like random rotation, flip, and color jittering for tra
 
 You can see the training and validation plots for loss and accuracy, the validation confusion matrix, and the test confusion matrix for the best training for the processed dataset t in the following figures.
 
-![output](https://github.com/user-attachments/assets/6f086aab-2e00-4372-8840-4133499d25d8) ![output (1)](https://github.com/user-attachments/assets/2ee1fc54-f154-4404-b1a1-a9d61ff2a533) ![ferPlus_epoch5_acc0 7667_bacc0 7611](https://github.com/user-attachments/assets/f1558c3a-6efd-44ee-8b50-2c67c7697a54) 
+![output](https://github.com/user-attachments/assets/6f086aab-2e00-4372-8840-4133499d25d8) ![output (1)](https://github.com/user-attachments/assets/2ee1fc54-f154-4404-b1a1-a9d61ff2a533) ![ferPlus_epoch5_acc0 7667_bacc0 7611](https://github.com/user-attachments/assets/f1558c3a-6efd-44ee-8b50-2c67c7697a54) ![ferPlus_acc0 8262_bacc](https://github.com/user-attachments/assets/fa2c48e5-1f5e-4425-949c-51b2618e499d)
+
 
 
 As you can in the training plot, the network is overfitted. 
