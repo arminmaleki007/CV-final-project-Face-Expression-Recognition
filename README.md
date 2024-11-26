@@ -88,7 +88,7 @@ You can see the training and validation plots for loss and accuracy, the validat
 As you can in the training plot, the network is overfitted. 
 
 ### Code instructions
-To train, you need to first download the dataset, run ferPlus_train.py, and choose the dataset directory (default='/data/ferPlus/'), number of epochs (default =80), batch_size (defult=64), number of heads (defult=2), number of workers (defult=8), and Initial learning rate (defult=0.01). The training process will save the trained network, and validation confusion matrix if the validation accuracy is more than a threshold. 
+To train, first you need to download the dataset, run ferPlus_train.py, and choose the dataset directory (default='/data/ferPlus/'), number of epochs (default =80), batch_size (defult=64), number of heads (defult=2), number of workers (defult=8), and Initial learning rate (defult=0.01). The training process will save the trained network, and validation confusion matrix if the validation accuracy is more than a threshold. 
 
-To test, you need to run ferPlus_test.py and choose the dataset directory (default='/data/ferPlus/'), model_path (default='./checkpoints/original/original.pth'), batch_size (defult=64), number of heads (defult=2), and number of workers (defult=8).
+To test, first, you need to extract the weights from the checkpoints folder, then you need to run ferPlus_test.py and choose the dataset directory (default='/data/ferPlus/'), model_path (default='./checkpoints/original/original.pth'), batch_size (defult=64), number of heads (defult=2), and number of workers (defult=8).
 
