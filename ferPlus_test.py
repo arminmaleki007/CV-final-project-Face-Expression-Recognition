@@ -17,7 +17,7 @@ def parse_args():
     parser.add_argument('--batch_size', type=int, default=32, help='Batch size.')
     parser.add_argument('--workers', default=8, type=int, help='Number of data loading workers.')
     parser.add_argument('--num_head', type=int, default=2, help='Number of attention head.')
-    parser.add_argument('--model_path', default = './checkpoints/head2-rl0.001/ferPlus_epoch2_acc0.7655_bacc0.7609.pth')
+    parser.add_argument('--model_path', default = './checkpoints/original/original.pth')
     return parser.parse_args()
 
                
