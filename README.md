@@ -59,4 +59,33 @@ The feature map of size 7 × 7 × 512, obtained from the DDAN, undergoes a linea
 $L = L_{cls} + \lambda_a L_{att}$
 
 where $L_{cls}$ stands for standard cross entropy loss and $L_{att}$ is attention loss. $\lambda_a$ is a hyperparameter. The default of $\lambda_a$ is 0.1.
+
+You can see the original picture (first column), the picture heatmap after the MFN backbone (second column), and the picture heatmap after the DDAN network (third column) in the next picture.
+
+![combined_reversed_side_by_side](https://github.com/user-attachments/assets/05baa1db-928f-4cdd-8405-36d676b92fe4)
+
 ### Training
+I trained the network with the dataset for 8 times. I used my laptop with TRX 3060 with 6GB GPU. I used batch-size=64 because of the GPU limitations.
+
+First of all, I used two heads for the attention mechanism. Then I used four heads. Then I changed the learning rate from 0.01 to 0.001. The next step I took was to use preprocessing data as Retinaface. In this method, the output is the picture with a boundary box for the face with 5 dots (two for the eyes, one for the nose, and two for the mouth). 
+
+https://github.com/deepinsight/insightface/tree/master/detection/retinaface
+
+This method requires a label for pictures to train, and it is not available for the Ferplus dataset. I just used their trained model to test the dataset to draw the boundary box with dots on the original pictures as you can see in the next figure. Unfortunately, the method could not detect faces for all of the pictures in the dataset.
+
+![augmented_6](https://github.com/user-attachments/assets/f9e3b62b-caa4-401b-a720-7fbeb632a0b6)
+
+I used data augmentation like random rotation, flip, and color jittering for training and validation. However, the training process overfitted in the early epochs. So, I trained without data augmentation for the original and processed datasets. At last. I used batch_size = 32 as the last step. You can see the training and validation plots for loss and accuracy, the validation confusion matrix, and the test confusion matrix for the best training for the original dataset in the following figures.
+
+![output](https://github.com/user-attachments/assets/0673bc86-54b8-4df7-ace4-f7fe2921d078) ![output (1)](https://github.com/user-attachments/assets/f9cae5f7-ff19-40db-b1ef-3eb59dcc24b8) ![ferPlus_epoch3_acc0 771_bacc0 767](https://github.com/user-attachments/assets/3727d5e7-5632-4c30-8aa5-4eb1e1e90126) ![ferPlus_acc0 8167_bacc](https://github.com/user-attachments/assets/40a20f7c-b90f-401a-87c9-0535c575eeb4)
+
+You can see the training and validation plots for loss and accuracy, the validation confusion matrix, and the test confusion matrix for the best training for the processed dataset t in the following figures.
+
+![output](https://github.com/user-attachments/assets/6f086aab-2e00-4372-8840-4133499d25d8) ![output (1)](https://github.com/user-attachments/assets/2ee1fc54-f154-4404-b1a1-a9d61ff2a533) ![ferPlus_epoch5_acc0 7667_bacc0 7611](https://github.com/user-attachments/assets/f1558c3a-6efd-44ee-8b50-2c67c7697a54) 
+
+
+As you can in the training plot, the network is overfitted. 
+
+
+
+
