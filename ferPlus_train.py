@@ -30,7 +30,7 @@ eps = sys.float_info.epsilon
 def parse_args():
     parser = argparse.ArgumentParser()
     parser.add_argument('--fer_path', type=str, default='/data/ferPlus/', help='ferPlus-DB dataset path.')
-    parser.add_argument('--batch_size', type=int, default=32, help='Batch size.')
+    parser.add_argument('--batch_size', type=int, default=64, help='Batch size.')
     parser.add_argument('--lr', type=float, default=0.001, help='Initial learning rate for sgd.')
     parser.add_argument('--workers', default=8, type=int, help='Number of data loading workers.')
     parser.add_argument('--epochs', type=int, default=80, help='Total training epochs.')
