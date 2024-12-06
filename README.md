@@ -52,7 +52,7 @@ Attention loss: The Mean Squared Error (MSE) loss is calculated between each pai
 
 $L_{att} = \frac{1}{\sum_{i=0}^n \sum_{k=0, i \neq k}^n \text{MSE}(a_i, a_k)} (i \neq j)$
 
-where 𝑛 is the number of attention heads. $a_i$ and $a_k$ are attentions maps yielded from two different heads.
+where 𝑛 is the number of attention heads. $a_i$ and $a_k$ are attention maps yielded from two different heads.
 
 The feature map of size 7 × 7 × 512, obtained from the DDAN, undergoes a linear GDConv layer and a linear layer. This transformed feature map is then reshaped to a 512 d vector. The class confidence is obtained via a fully connected layer. Regarding the loss function, the standard cross-entropy loss is employed in the training process. This loss function effectively measures the discrepancy between predicted class probabilities and the ground truth labels, facilitating the optimization of the model’s parameters. The overall loss function can be expressed as follows:
 
@@ -65,7 +65,7 @@ You can see the original picture (first column), the picture heatmap after the M
 ![combined_reversed_side_by_side](https://github.com/user-attachments/assets/05baa1db-928f-4cdd-8405-36d676b92fe4)
 
 ### Training
-I trained the network with the dataset for 8 times. I used my laptop with TRX 3060 with 6GB GPU. I used batch-size=64 because of the GPU limitations.
+I trained the network with the dataset 8 times. I used my laptop with TRX 3060 with 6GB GPU. I used batch-size=64 because of the GPU limitations.
 
 First of all, I used two heads for the attention mechanism. Then I used four heads. Then I changed the learning rate from 0.01 to 0.001. The next step I took was to use preprocessing data as Retinaface. In this method, the output is the picture with a boundary box for the face with 5 dots (two for the eyes, one for the nose, and two for the mouth). 
 
@@ -92,3 +92,8 @@ To train, first you need to download the dataset, run ferPlus_train.py, and choo
 
 To test, first, you need to extract the weights from the checkpoints folder, then you need to run ferPlus_test.py and choose the dataset directory (default='/data/ferPlus/'), model_path (default='./checkpoints/original/original.pth'), batch_size (defult=64), number of heads (defult=2), and number of workers (defult=8).
 
+## Part 4: Second Update
+I want to study the effect of dimension changing of the picture in the test results. To do so, I created a new Python code called **ferPlus_test_resiez.py**. This code has added parts to the ferPlus_test. The testing image first will be downsized using the cv2.resize function. You can choose what size the image changes to by defining the resize argument. The default value is 112 which is the original dataset dimension. Then, the downsized image will be upsized to a 112*112 image. I used a different cv2.resize options with different downsized image dimensions. You can see the results as follows.
+
+Another task that I have done is to test the model with a laptop webcam. You can run the test by running the **ferPlus_test_camera.py** code. 
+First I start the webcam. Then I added a 224 * 224 bounding box overlay on the camera feed and allowed capturing the face within the box, Then I resized the image inside the boundary box to 112 * 112. Next, I converted the image to grayscale. At last, I loaded the model to test the image. The predicted classes are shown in the top left of the camera feed. 
