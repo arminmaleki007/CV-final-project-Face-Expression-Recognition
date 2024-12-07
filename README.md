@@ -95,5 +95,16 @@ To test, first, you need to extract the weights from the checkpoints folder, the
 ## Part 4: Second Update
 I want to study the effect of dimension changing of the picture in the test results. To do so, I created a new Python code called **ferPlus_test_resiez.py**. This code has added parts to the ferPlus_test. The testing image first will be downsized using the cv2.resize function. You can choose what size the image changes to by defining the resize argument. The default value is 112 which is the original dataset dimension. Then, the downsized image will be upsized to a 112*112 image. I used a different cv2.resize options with different downsized image dimensions. You can see the results as follows.
 
+|Method\resize value|  112 |  96  |  84  |  64  |  56  |  48  |  32  |  28  |  16  |  14  |
+|-------------------|------|------|------|------|------|------|------|------|------|------|
+|    Both Cubic     |81.08%|81.05%|81.00%|81.02%|81.36%|81.08%|79.32%|77.36%|57.65%|52.25%|
+|    Both Linear    |81.08%|81.39%|81.30%|81.25%|81.21%|81.00%|79.12%|77.55%|57.93%|53.59%|
+|    Both Lanczos4  |81.08%|81.16%|81.05%|80.91%|81.11%|80.83%|79.18%|77.41%|53.82%|49.45%|
+|    Cubic Linear   |81.08%|81.19%|81.19%|81.47%|81.58%|81.30%|78.67%|77.55%|57.93%|52.20%|
+
+As you can see, all the methods performed similarly. All the methods did the same testing value as the original image dimensions until using 32 * 32 resizing, and smaller values performed worse. Therefore we can state that 48 * 48 is the threshold for resizing in testing. The Lanczos4 method performed the worst. You can see the results in "checkpoints/test results".
+
 Another task that I have done is to test the model with a laptop webcam. You can run the test by running the **ferPlus_test_camera.py** code. 
 First I start the webcam. Then I added a 224 * 224 bounding box overlay on the camera feed and allowed capturing the face within the box, Then I resized the image inside the boundary box to 112 * 112. Next, I converted the image to grayscale. At last, I loaded the model to test the image. The predicted classes are shown in the top left of the camera feed. 
+
+Unfortunately, the testing accuracy in the webcam feed seems low. This is the result of overfitting. 
