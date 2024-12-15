@@ -108,3 +108,16 @@ Another task that I have done is to test the model with a laptop webcam. You can
 First I start the webcam. Then I added a 224 * 224 bounding box overlay on the camera feed and allowed capturing the face within the box, Then I resized the image inside the boundary box to 112 * 112. Next, I converted the image to grayscale. At last, I loaded the model to test the image. The predicted classes are shown in the top left of the camera feed. 
 
 Unfortunately, the testing accuracy in the webcam feed seems low. This is the result of overfitting. 
+## Part 5: The final update
+
+For the last update, I studied the test accuracy and confusion matrix for two different subsets from the original test dataset. I divided the test dataset into **Kids** images and **adults** images. The main purpose behind this study is that adults have more developed muscles in their faces, they learned how to express their feelings over time, and their face posture has more features to detect feelings. Therefore, detecting emotional features in adults' faces should be easier than kids', and since my dataset contains both group images, I want to study the effect of each group on the testing accuracy. 
+
+The first objective was to study the accuracy based on age groups. However, I decided to study the accuracy just for kids and adults because of the lack of data in certain groups, and lack of labels to determine the age group.
+
+Here is a brokedown number of pictures in each sub-dataset:
+
+|Age group\ number of data| Total | Angry | Contempt | Disgust | Fear | Happy | Neutral | Sad | Surprise |
+|-------------------------|-------|-------|----------|---------|------|-------|---------|-----|----------|
+|           Kids          | 620   | 51    | 4        | 6       | 7    | 170   | 153     | 129 | 100      |
+|          Adults         | 2947  | 267   | 25       | 14      | 91   | 759   | 1121    | 320 | 350      |
+
