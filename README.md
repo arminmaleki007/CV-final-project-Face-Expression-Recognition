@@ -112,7 +112,7 @@ Unfortunately, the testing accuracy in the webcam feed seems low. This is the re
 
 For the last update, I studied the test accuracy and confusion matrix for two different subsets from the original test dataset. I divided the test dataset into **Kids** images and **adults** images. The main purpose behind this study is that adults have more developed muscles in their faces, they learned how to express their feelings over time, and their face posture has more features to detect feelings. Therefore, detecting emotional features in adults' faces should be easier than kids', and since my dataset contains both group images, I want to study the effect of each group on the testing accuracy. 
 
-The first objective was to study the accuracy based on age groups. However, I decided to study the accuracy just for kids and adults because of the lack of data in certain groups, and lack of labels to determine the age group.
+The first objective was to study the accuracy of the data based on age groups. However, I decided to study the accuracy just for kids and adults because of the lack of data in certain groups, and lack of labels to determine the age group.
 
 Here is a brokedown number of pictures in each sub-dataset:
 
@@ -121,3 +121,12 @@ Here is a brokedown number of pictures in each sub-dataset:
 |           Kids          | 620   | 51    | 4        | 6       | 7    | 170   | 153     | 129 | 100      |
 |          Adults         | 2947  | 267   | 25       | 14      | 91   | 759   | 1121    | 320 | 350      |
 
+As you can see, the amount of data for kids is less than that for adults. This definitely has a result on the accuracy, because one wrong sample decreases the accuracy of more than adults. You can see the accuracy and confusion matrix. The first image is for adults and the image is for kids.
+
+![ferPlus_acc0 8276_bacc](https://github.com/user-attachments/assets/a96d9eb2-8521-4e67-b538-55440c8fff76)
+
+![ferPlus_acc0 8048_bacc](https://github.com/user-attachments/assets/5297ca6c-4a9c-4011-8f85-92894a8b86a1)
+
+As you can see, the accuracy for adults is 2% more than the accuracy for kids. In addition, all the classes have more accuracy for adults than the kids except **Angry** class. This is because almost all of the kids in the angry class are crying, and it is easier to detect. However, less data in the kids' dataset makes it harder to get a reasonable conclusion.
+
+In summary, for this project, I used a vision transformer-based model to classify facial expressions. Even though the model was overfitted in early epochs, the results were satisfying. In addition, I studied the effect of resizing images and the age group on the accuracy. At last, I developed a system to detect facial expressions in real-time with the camera. 
